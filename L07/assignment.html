@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/03496cc82a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="js/tags.js">
+
+    <!-- Add Bootstrap CSS here -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>SOI Learning Portal</title>
+
+    <style>
+        .notiIcon {
+
+            margin-right: 15px;
+            margin-left: 20px;
+            color: white;
+            width: 36px;
+            height: 36px;
+            margin-right: 20px;
+            border-radius: 100%;
+            background: lightslategrey;
+            text-align: center;
+            padding-top: 10px;
+
+        }
+
+        .profileIcon {
+
+            color: white;
+            vertical-align: middle;
+            width: 38px;
+            height: 38px;
+            margin-right: 20px;
+            background: lightgreen;
+            border-radius: 100%;
+
+        }
+
+
+
+        .navy {
+
+            background: grey;
+
+        }
+
+        .bookIcon {
+
+
+            text-align: center;
+            border-radius: 100%;
+            color: black;
+            padding: 15px;
+            background: rgb(105, 153, 224);
+            width: 55px;
+            height: 55px;
+            vertical-align: middle;
+
+        }
+
+
+
+        .personIcon {
+
+
+            text-align: center;
+            border-radius: 100%;
+            color: black;
+            padding: 15px;
+            background: rgb(105, 153, 224);
+            width: 55px;
+            height: 55px;
+            vertical-align: middle;
+
+        }
+
+        .timeIcon {
+
+            text-align: center;
+            border-radius: 100%;
+            color: black;
+            padding: 15px;
+            background: rgb(105, 153, 224);
+            width: 55px;
+            height: 55px;
+            vertical-align: middle;
+
+        }
+
+        .icon:hover {
+
+            opacity: .7
+        }
+
+
+        .notifications {
+            width: 300px;
+            height: 0px;
+            opacity: 0;
+            position: absolute;
+            top: 63px;
+            right: 62px;
+            border-radius: 5px 0px 5px 5px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+        }
+
+        .notifications h2 {
+            font-size: 14px;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            color: black
+        }
+
+        .notifications h2 span {
+            color: #f00
+        }
+
+        .notifications-item {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            padding: 6px 9px;
+            margin-bottom: 0px;
+            cursor: pointer
+        }
+
+        .notifications-item:hover {
+            background-color: #eee
+        }
+
+        .notifications-item img {
+            display: block;
+            width: 50px;
+            height: 50px;
+            margin-right: 9px;
+            border-radius: 50%;
+            margin-top: 2px
+        }
+
+        .notifications-item .text h4 {
+            color: black;
+            font-size: 16px;
+            margin-top: 3px
+        }
+
+        .notifications-item .text p {
+            color: black;
+            font-size: 12px
+        }
+
+        .ui-widget {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 100px;
+            background: white;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Add Bootstrap JS here -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script src="js/tags.js" async></script>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" aria-current="page" href="#">SOI Learning Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Courses
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">HTML</a></li>
+                            <li><a class="dropdown-item" href="#">CSS</a></li>
+                            <li><a class="dropdown-item" href="#">PHP</a></li>
+                            <li><a class="dropdown-item" href="#">Javascript</a></li>
+                            <li><a class="dropdown-item" href="#">Python</a></li>
+                            <li><a class="dropdown-item" href="#">Java</a></li>
+                            <li><a class="dropdown-item" href="#">iOS</a></li>
+                            <li><a class="dropdown-item" href="#">React</a></li>
+
+                        </ul>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+
+
+                    <form class="d-flex" style="margin-left: 30px;">
+
+                        <input class="form-control me-2 searchBar ui-widget" style="width: 75%;" type="search" id="tags"
+                            placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+
+                    </form>
+
+                </ul>
+
+
+                <div class="d-flex">
+                    <div class="icon" id="bell"><i class="far fa-bell notiIcon"></i> </div>
+                    <div class="notifications" id="box">
+                        <h2>Notifications - <span>1</span></h2>
+                        <div class="notifications-item">
+                            <div class="text">
+                                <b>
+                                    <h4>Samsung News</h4>
+                                </b>
+                                <p>Latest News: Samsung UI 5.0 is releasing soon</p>
+                                <p>Latest Features...</p>
+                                <p>Date: 24/12/2021 11:24PM</p>
+                                <a href="/info02/">Read More</a>
+                            </div>
+                        </div>
+                        <div class="notifications-item" style="background: lightslategray;">
+                            <div class="text">
+                                <h4>Samsung News</h4>
+                                <p>Latest News: Samsung UI 4.0 has released worldwide</p>
+                                <p>Latest Features...</p>
+                                <p>Date: 27/11/2021 11:21PM</p>
+                                <a href="/info01/">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="images/tot_profile.png" class="profileIcon" alt="Profile Picture">
+
+                </div>
+
+            </div>
+
+        </div>
+    </nav>
+
+
+
+    <div class="container-fluid bg-primary">
+        <div class="container">
+            <div class="row ">
+                <div class="col-sm-7" style="margin-top: 70px;">
+                    <h1>Welcome to</h1>
+                    <h1>SOI Learning Portal</h1>
+
+                    <button type="button" class="btn btn-info" style="margin-right: 10px;">Browse Course</button>
+                    <button type="button" class="btn btn-light">Be An Instructor</button>
+
+                </div>
+
+
+
+                <div class="col-sm-5">
+
+                    <img src="images/tot_3.png" alt="Banner Picture" style="width: 50%;">
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="container" style="margin-top: 30px;">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <h4 class="bookIcon"><i class="fas fa-book"></i></h4>
+                    </div>
+                    <div class="col-sm-7">
+                        <b>158 online courses</b>
+                        <p>Enjoy a variety of fresh topics</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-sm-2">
+
+                        <h4 class="personIcon"><i class="fas fa-user-tie"></i></h4>
+                    </div>
+                    <div class="col-sm-7">
+                        <b>Expert Instruction</b>
+                        <p>Find the right instructor for you</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-sm-2">
+
+                        <h4 class="timeIcon"><i class="fas fa-history"></i></h4>
+                    </div>
+
+                    <div class="col-sm-7">
+                        <b>Lifetime Access</b>
+                        <p>Learn on your schedule</p>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid" style="background: cornflowerblue; margin-top: 60px;">
+
+        <div class="container">
+
+            <b>
+                <h1 style="padding-top: 20px; padding-left: 6px; padding-bottom: 20px;">Feature Courses</h1>
+            </b>
+
+            <div class="carousel slide" id="myCarousel" data-bs-ride="carousel">
+                <div class="carousel-inner">
+
+                    <div class="carousel-item active">
+                        <div class="row">
+
+
+                            <div class="col-sm-3">
+
+                                <div class="card card1 h-100">
+                                    <img src="images/html.jpg" height="235" class="card-img-top" alt="HTML and CSS">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Introduction to HTML and CSS</h5>
+                                        <p class="card-text"><i class="far fa-clock"></i> 2h 30m</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted"><i style="margin-right: auto;"
+                                                class="fas fa-user-circle"></i>
+                                            Hannah Lim<button type="button" style="float: right;" class="btnAdd1"><i
+                                                    class="fas fa-bookmark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" data-bs-toggle="tooltip"
+                                                    data-bs-placement="bottom"
+                                                    title="Add to Bookmarks"></i></button></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class=" card card2 h-100">
+                                    <img src="images/ui_ux.jpg" class="card-img-top" alt="UI and UX">
+                                    <div class="card-body">
+                                        <h5 class="card-title">User Experience and Interface Design</h5>
+                                        <p class="card-text"><i class="far fa-clock"></i> 2h 45m</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted"><i style="margin-right: auto;"
+                                                class="fas fa-user-circle"></i>
+                                            Julia Lee<button type="button" style="float: right;" class="btnAdd2"><i
+                                                    class="fas fa-bookmark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" data-bs-toggle="tooltip"
+                                                    data-bs-placement="bottom"
+                                                    title="Add to Bookmarks"></i></button></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="card card3 h-100">
+                                    <img src="images/ios.jpg" height="230" class="card-img-top" alt="IOS">
+                                    <div class="card-body">
+                                        <h5 class="card-title">iOS App Development using Xcode and Swift</h5>
+                                        <p class="card-text"><i class="far fa-clock"></i> 4h 30m</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted"><i style="margin-right: auto;"
+                                                class="fas fa-user-circle"></i>
+                                            Ryan Low<button type="button" style="float: right;" class="btnAdd3"><i
+                                                    class="fas fa-bookmark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" data-bs-toggle="tooltip"
+                                                    data-bs-placement="bottom"
+                                                    title="Add to Bookmarks"></i></button></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="card card4 h-100">
+                                    <img src="images/javascript.jpg" height="230" class="card-img-top"
+                                        alt="Front-end Javascript">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Front-end Javascript Framework</h5>
+                                        <p class="card-text"><i class="far fa-clock"></i> 3h 45m</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted"><i style="margin-right: auto;"
+                                                class="fas fa-user-circle"></i>
+                                            Azhar Kamar <button type="button" style="float: right;" class="btnAdd4"><i
+                                                    class="fas fa-bookmark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" data-bs-toggle="tooltip"
+                                                    data-bs-placement="bottom"
+                                                    title="Add to Bookmarks"></i></button></small>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="carousel-item ">
+                        <div class="row">
+
+                            <div class="col-sm-3">
+
+                                <div class="card card5 h-100">
+                                    <img src="images/java.jpg" height="235" class="card-img-top" alt="Java">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Object Oriented Programming Java</h5>
+                                        <p class="card-text"><i class="far fa-clock"></i> 2h 30m</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted"><i style="margin-right: auto;"
+                                                class="fas fa-user-circle"></i>
+                                            Andy Tao<button type="button" style="float: right;" class="btnAdd5"><i
+                                                    class="fas fa-bookmark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" data-bs-toggle="tooltip"
+                                                    data-bs-placement="bottom"
+                                                    title="Add to Bookmarks"></i></button></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class=" card card6 h-100">
+                                    <img src="images/php.jpg" class="card-img-top" alt="PHP">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Hypertext Preprocessor PHP</h5>
+                                        <p class="card-text"><i class="far fa-clock"></i> 2h 45m</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted"><i style="margin-right: auto;"
+                                                class="fas fa-user-circle"></i>
+                                            Hannah Lim<button type="button" style="float: right;" class="btnAdd6"><i
+                                                    class="fas fa-bookmark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" data-bs-toggle="tooltip"
+                                                    data-bs-placement="bottom"
+                                                    title="Add to Bookmarks"></i></button></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class=" card card7 h-100">
+                                    <img src="images/swift.jpg" height="230" class="card-img-top" alt="Swift">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Swift Programming</h5>
+                                        <p class="card-text"><i class="far fa-clock"></i> 4h 30m</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted"><i style="margin-right: auto;"
+                                                class="fas fa-user-circle"></i>
+                                            Ryan Low<button type="button" style="float: right;" class="btnAdd7"><i
+                                                    class="fas fa-bookmark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" data-bs-toggle="tooltip"
+                                                    data-bs-placement="bottom"
+                                                    title="Add to Bookmarks"></i></button></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class=" card card8 h-100">
+                                    <img src="images/python.jpg" height="230" class="card-img-top" alt="Python">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Front-end Javascript Framework</h5>
+                                        <p class="card-text"><i class="far fa-clock"></i> 3h 45m</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted"><i style="margin-right: auto;"
+                                                class="fas fa-user-circle"></i>
+                                            Ryan Low <button type="button" style="float: right;" class="btnAdd8"><i
+                                                    class="fas fa-bookmark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" data-bs-toggle="tooltip"
+                                                    data-bs-placement="bottom"
+                                                    title="Add to Bookmarks"></i></button></small>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom"
+                aria-labelledby="offcanvasBottomLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasBottomLabel">Bookmarks</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body small">
+                    <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 addCanvas">
+
+                    </div>
+                </div>
+            </div>
+
+
+            <script>
+
+                $(document).ready(function () {
+
+                    $(".profileIcon").click(function () {
+                        $(this).toggleClass("navy");
+                    });
+
+                    $('[data-bs-toggle="tooltip"]').tooltip();
+
+
+                    var down = false;
+
+                    $('#bell').click(function (e) {
+
+                        var color = $(this).text();
+                        if (down) {
+
+                            $('#box').css('height', '0px');
+                            $('#box').css('opacity', '0');
+                            down = false;
+                        } else {
+
+                            $('#box').css('height', 'auto');
+                            $('#box').css('opacity', '1');
+                            down = true;
+
+                        }
+
+
+                    });
+
+                    $(".btnAdd1").click(function(){
+                        $(".card1:first").clone().appendTo(".addCanvas")
+                    });
+
+                    $(".btnAdd2").click(function(){
+                        $(".card2:first").clone().appendTo(".addCanvas")
+                    });
+
+                    $(".btnAdd3").click(function(){
+                        $(".card3:first").clone().appendTo(".addCanvas")
+                    });
+
+                    $(".btnAdd4").click(function(){
+                        $(".card4:first").clone().appendTo(".addCanvas")
+                    });
+
+                    
+                    $(".btnAdd5").click(function(){
+                        $(".card5:first").clone().appendTo(".addCanvas")
+                    });
+
+                    
+                    $(".btnAdd6").click(function(){
+                        $(".card6:first").clone().appendTo(".addCanvas")
+                    });
+
+                    
+                    $(".btnAdd7").click(function(){
+                        $(".card7:first").clone().appendTo(".addCanvas")
+                    });
+
+                    
+                    $(".btnAdd8").click(function(){
+                        $(".card8:first").clone().appendTo(".addCanvas")
+                    });
+
+
+                });
+
+
+
+
+
+            </script>
+
+            <script>
+
+                $(function () {
+
+                    $("#tags").autocomplete({
+                        source: searchTags
+                    });
+                });
+
+            </script>
+
+
+
+            <footer>
+
+                <hr>
+
+                <p style="margin-top: 25px; margin-left: 60px; margin-bottom: 60px; ">© 2021 SOI Learning Portal. All
+                    Right
+                    Reserved.
+                    <a style="float: right; margin-right: 25px; word-spacing: 15px;">Privacy Terms Feedback Support</a>
+
+
+                </p>
+
+            </footer>
+
+            <br />
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>
